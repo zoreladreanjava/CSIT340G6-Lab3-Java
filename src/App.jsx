@@ -1,14 +1,26 @@
 const App = () => {
   const course = "Industry Elective 1";
-  const part1 = "Applications Development and Emerging Technologies";
-  const exercises1 = 3;
-  const part2 = "Information Management-2";
-  const exercises2 = 3;
-  const part3 = "Testing and Quality Assurance";
-  const exercises3 = 3;
-  const fullName = "Zorel Adrean R. Java";
-  const courseCode = "CSIT340";
-  const section = "G6";
+
+  const part1 = {
+    name: "Applications Development and Emerging Technologies",
+    exercises: 3
+  }
+
+  const part2 = {
+    name: "Information Management-2",
+    exercises: 3
+  }
+
+  const part3 = {
+    name: "Testing and Quality Assurance",
+    exercises: 3
+  }
+
+  const student = {
+    name: "Zorel Adrean R. Java",
+    courseCode: "CSIT340",
+    section: "G6"
+  };
 
   return (
     <div>
@@ -17,14 +29,11 @@ const App = () => {
       </h1>
       <Content
         part1={part1}
-        exercises1={exercises1}
         part2={part2}
-        exercises2={exercises2}
         part3={part3}
-        exercises3={exercises3}
       />
-      <Total units={exercises1 + exercises2 + exercises3} />
-      <Footer name={fullName} code={courseCode} section={section} />
+      <Total units={part1.exercises + part2.exercises + part3.exercises} />
+      <Footer student={student} />
     </div>
   );
 };
@@ -40,9 +49,9 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part name={props.part1} exercises={props.exercises1} />
-      <Part name={props.part2} exercises={props.exercises2} />
-      <Part name={props.part3} exercises={props.exercises3} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div>
   );
 };
@@ -51,7 +60,7 @@ const Part = (props) => {
   return (
     <div>
       <p>
-        {props.name}: {props.exercises}
+        {props.part.name}: {props.part.exercises}
       </p>
     </div>
   );
@@ -69,7 +78,7 @@ const Footer = (props) => {
   return (
     <div>
       <p>
-        {props.name} - {props.code} - {props.section}
+        {props.student.name} - {props.student.courseCode} - {props.student.section}
       </p>
     </div>
   );
