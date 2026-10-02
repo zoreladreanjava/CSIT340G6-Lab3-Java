@@ -1,37 +1,37 @@
 const App = () => {
-  const course = "Industry Elective 1";
-
-  const parts = [
-    {
-      name: "Applications Development and Emerging Technologies",
-      units: 3,
-    },
-    {
-      name: "Information Management-2",
-      units: 3,
-    },
-    {
-      name: "Testing and Quality Assurance",
-      units: 3,
-    },
-  ];
-
-  const student = [
-    {
-      name: "Zorel Adrean R. Java",
-      courseCode: "CSIT340",
-      section: "G6"
-    }
-  ];
+  const course = {
+    name: "Industry Elective 1",
+    parts: [
+      {
+        name: "Applications Development and Emerging Technologies",
+        units: 3,
+      },
+      {
+        name: "Information Management-2",
+        units: 3,
+      },
+      {
+        name: "Testing and Quality Assurance",
+        units: 3,
+      },
+    ],
+    student: [
+      {
+        name: "Zorel Adrean R. Java",
+        courseCode: "CSIT340",
+        section: "G6",
+      },
+    ],
+  };
 
   return (
     <div>
       <h1>
-        <Header course={course} />
+        <Header course={course.name} />
       </h1>
-      <Content subjectParts={parts} />
-      <Total unitParts={parts} />
-      <Footer studentInfo={student} />
+      <Content subjectParts={course.parts} />
+      <Total unitParts={course.parts} />
+      <Footer studentInfo={course.student} />
     </div>
   );
 };
@@ -66,7 +66,9 @@ const Part = (props) => {
 
 const Total = (props) => {
   const totalUnits =
-    props.unitParts[0].units + props.unitParts[1].units + props.unitParts[2].units;
+    props.unitParts[0].units +
+    props.unitParts[1].units +
+    props.unitParts[2].units;
   return (
     <div>
       <p>Number of units: {totalUnits}</p>
@@ -78,7 +80,8 @@ const Footer = (props) => {
   return (
     <div>
       <p>
-        {props.studentInfo[0].name} - {props.studentInfo[0].courseCode} - {props.studentInfo[0].section}
+        {props.studentInfo[0].name} - {props.studentInfo[0].courseCode} -{" "}
+        {props.studentInfo[0].section}
       </p>
     </div>
   );
